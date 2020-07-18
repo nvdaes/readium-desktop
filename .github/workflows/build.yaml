@@ -1,0 +1,22 @@
+name: Build and test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: npm install
+    - name: Postinstall
+      run: npm run __postinstall
+    - name: Lint
+      run: npm run lint
+    - name: Start
+      run: npm start
+    - name: Package
+      run: npm run package
