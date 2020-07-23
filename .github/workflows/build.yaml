@@ -10,6 +10,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.1
+      with:
+        vs-version: '[17.0,17.9)'
     - name: Install dependencies
       run: npm install
     - name: Postinstall
@@ -19,4 +23,4 @@ jobs:
     - name: Start
       run: npm start
     - name: Package
-      run: npm run package
+      run: npm run package:win
