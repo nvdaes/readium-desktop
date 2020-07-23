@@ -5,15 +5,11 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: windows-2016
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.1
-      with:
-        vs-version: '[15.9.24,15.9.25]'
     - name: Install dependencies
       run: npm install
     - name: Postinstall
