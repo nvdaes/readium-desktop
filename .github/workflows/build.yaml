@@ -15,4 +15,11 @@ jobs:
     - name: Lint
       run: npm run lint
     - name: Package
-      run: npm run package:win
+        run: npm run package:win
+- name: Upload a Build Artifact
+  uses: actions/upload-artifact@v2
+  with:
+    # Artifact name
+    name: # optional
+    # A file, directory or wildcard pattern that describes what to upload
+    path: **/*/*.exe
