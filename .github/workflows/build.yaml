@@ -1,0 +1,23 @@
+name: Build and test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: windows-2016
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: npm install
+    - name: Lint
+      run: npm run lint
+    - name: Package
+      run: npm run package:win
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Thorium-installer
+        path: ./release/*.exe
