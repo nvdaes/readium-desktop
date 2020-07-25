@@ -351,7 +351,7 @@ class Reader extends React.Component<IProps, IState> {
                                     id="main-content"
                                     title={this.props.__("accessibility.mainContent")}
                                     aria-label={this.props.__("accessibility.mainContent")}
-                                    tabIndex={-1}>{this.props.__("accessibility.mainContent")}</a>
+                                    tabIndex={-1} accesskey="p">{this.props.__("accessibility.mainContent")}</a>
                                 <div id="publication_viewport" className={styles.publication_viewport}> </div>
                             </main>
                         </div>
