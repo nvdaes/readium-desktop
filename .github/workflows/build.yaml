@@ -8,14 +8,17 @@ jobs:
     runs-on: windows-2016
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Install dependencies
-      run: npm ci
-    - name: Lint
-      run: npm run lint
-    - name: Package
-      run: npm run package:win
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2-beta #actions/setup-node@v1
+      with:
+        node-version: '12'
+    - run: node --version && npm --version
+    - run: npm --global install npm@latest
+    - run: npm --version
+    - run: node scripts/package-ci-patch.js package.json ${{ github.run_id }} && cat package.json | grep -i VERSION && cat package.json
+    - run: npm ci
+    - run: npm run lint
+    - run: npm run package:win
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
